@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from 'sonner'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="flex justify-start items-start gap-2 p-2 bg-black text-white">
+          <a href="/upload-form" className="hover:text-gray-300">
+            Upload
+          </a>{" "}
+          <a href="/" className="hover:text-gray-300">
+            /
+          </a>
+        </div>
         {children}
+        <Toaster />
       </body>
     </html>
   );

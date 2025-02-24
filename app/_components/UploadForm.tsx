@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState, useTransition } from "react"
 import { Upload } from "lucide-react"
+import { toast } from "sonner"
 import { uploadImage } from "@/app/actions"
 import UploadDialog from "@/components/upload-dialog"
 
@@ -30,6 +31,7 @@ export default function UploadForm() {
           } else {
             setSelectedFile(null)
             setIsDialogOpen(false)
+            toast.success("Image uploaded successfully")
           }
         } catch (err) {
           setError("Server error occurred while uploading")
