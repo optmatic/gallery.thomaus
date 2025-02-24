@@ -49,7 +49,7 @@ export default function ImageViewer({ images, currentImage, onClose, onNavigate 
 
   return (
     <Dialog open={!!currentImage} onOpenChange={() => onClose()}>
-      <DialogContent className="max-w-7xl w-full h-[90vh] flex flex-col p-0 gap-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <DialogContent className="max-w-7xl w-full h-[90vh] bg-black flex flex-col p-0 gap-0 bg-black backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex items-center justify-between p-2 border-b">
           <div className="flex-1 px-4">
             <h2 className="text-lg font-semibold">{currentImage.title}</h2>
