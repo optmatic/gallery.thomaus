@@ -1,5 +1,5 @@
-import MediaGrid from "@/components/MediaGrid"
-import UploadForm from "@/components/UploadForm"
+import MediaGrid from "@/app/_components/MediaGrid"
+import UploadForm from "@/app/_components/UploadForm"
 
 export default function Home() {
   return (
