@@ -23,17 +23,22 @@ export default function UploadForm() {
       formData.append("title", title)
 
       startTransition(async () => {
-        const result = await uploadImage(formData)
-        if (!result.success) {
-          setError(result.error || "Failed to upload file")
-        } else {
-          setSelectedFile(null)
-          setIsDialogOpen(false)
+        try {
+          const result = await uploadImage(formData)
+          if (!result || !result.success) {
+            setError(result?.error || "Failed to upload file")
+          } else {
+            setSelectedFile(null)
+            setIsDialogOpen(false)
+          }
+        } catch (err) {
+          setError("Server error occurred while uploading")
+          console.error("Upload error:", err)
         }
       })
     } catch (err) {
-      setError("Failed to upload file")
-      console.error("Upload error:", err)
+      setError("Failed to prepare upload")
+      console.error("Form error:", err)
     }
   }
 

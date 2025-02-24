@@ -24,7 +24,7 @@ export default function UploadDialog({ isOpen, onClose, onConfirm, filename, isU
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Customize Image Title</DialogTitle>
+          <DialogTitle>Upload Image</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-4 py-4">
