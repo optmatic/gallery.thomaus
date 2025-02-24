@@ -16,10 +16,18 @@ export interface MediaItem {
     createdAt: string
   }
   
-  export interface MediaResponse {
+export interface MediaResponse {
     items: MediaItem[]
     hasMore: boolean
     total: number
+  }
+
+ export interface UploadDialogProps {
+    isOpen: boolean
+    onClose: () => void
+    onConfirm: (title: string) => void
+    filename: string
+    isUploading: boolean
   }
   
   

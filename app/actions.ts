@@ -3,7 +3,6 @@
 import { writeFile, mkdir } from "fs/promises"
 import { join } from "path"
 import { revalidatePath } from "next/cache"
-import { addMediaItem, initStorage } from "@/app/lib/media-storage"
 
 interface UploadResult {
   success: boolean
@@ -29,10 +28,8 @@ export async function uploadImage(data: FormData): Promise<UploadResult> {
     const uploadsDir = join(process.cwd(), "public/uploads")
     try {
       await mkdir(uploadsDir, { recursive: true })
-      await mkdir(join(process.cwd(), "data"), { recursive: true })
-      await initStorage()
     } catch (error) {
-      console.error("Error creating directories:", error)
+      console.error("Error creating uploads directory:", error)
     }
 
     // Create unique filename while preserving extension
@@ -48,14 +45,8 @@ export async function uploadImage(data: FormData): Promise<UploadResult> {
     const filepath = join(uploadsDir, filename)
     await writeFile(filepath, buffer)
 
-    // Create the public URL
+    // Return the public URL
     const publicPath = `/uploads/${filename}`
-
-    // Store metadata
-    await addMediaItem({
-      title,
-      path: publicPath,
-    })
 
     // Revalidate the page to show new image
     revalidatePath("/")

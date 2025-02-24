@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { getAllMedia } from "@/app/lib/media-storage"
+import { getUploadedFiles } from "@/app/lib/file-system"
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   const limit = Number.parseInt(searchParams.get("limit") || "20")
 
   try {
-    const { items, total } = await getAllMedia(page, limit)
+    const { items, total } = await getUploadedFiles(page, limit)
     const hasMore = total > page * limit
 
     return NextResponse.json({

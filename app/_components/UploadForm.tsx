@@ -5,7 +5,7 @@ import type React from "react"
 import { useState, useTransition } from "react"
 import { Upload } from "lucide-react"
 import { uploadImage } from "@/app/actions"
-import UploadDialog from "./upload-dialog"
+import UploadDialog from "@/components/upload-dialog"
 
 export default function UploadForm() {
   const [dragActive, setDragActive] = useState(false)

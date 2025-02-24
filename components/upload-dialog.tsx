@@ -8,14 +8,9 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Loader2 } from "lucide-react"
+import { UploadDialogProps } from "@/app/types"
 
-interface UploadDialogProps {
-  isOpen: boolean
-  onClose: () => void
-  onConfirm: (title: string) => void
-  filename: string
-  isUploading: boolean
-}
+
 
 export default function UploadDialog({ isOpen, onClose, onConfirm, filename, isUploading }: UploadDialogProps) {
   const [title, setTitle] = useState("")
